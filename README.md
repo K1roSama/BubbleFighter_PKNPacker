@@ -14,8 +14,7 @@
 
 [![Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-D22128?style=flat-square)](LICENSE)
 
-<!--<img width="100%" src="https://starify.komoridevs.icu/api/starify?owner=K1roSama&repo=BubbleFighter_PKNPacker" alt="starify" />-->
-<!--<img width="100%" src="https://starify.komoridevs.icu/api/starify?owner=Robonyantame&repo=MuTangChun_text" alt="starify" />-->
+<img width="100%" src="https://starify.komoridevs.icu/api/starify?owner=K1roSama&repo=BubbleFighter_PKNPacker" alt="starify" />
 
 [快速上手](#快速上手) · [构建指南](Docs/Build.md) · [命令行](#命令行) · [文档](#文档与贡献)
 
