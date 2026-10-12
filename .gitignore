@@ -1,0 +1,38 @@
+# Build outputs, local dependencies, logs and test workspaces.
+/Artifacts/
+/Build/Local.props
+/.vs/
+/.idea/
+/.vscode/
+*.user
+*.suo
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.log
+*.dmp
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Client inputs and resource/output directories never belong in the source repo.
+*.pkn
+/Packs/
+/Data/
+/ClientSamples/
+/static_analysis/
+/Workspaces/
+/Extracted/
+/Rebuilt/
+*.zip
+*.7z
+*.part
+
+# Python cache and local environments.
+__pycache__/
+*.py[cod]
+/.venv/

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="Current">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{31714546-1D49-541A-89FD-926402AB1C30}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <RootNamespace>PKNPacker</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="..\..\Build\Dependencies.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="..\..\Build\Common.props"/>
+  <PropertyGroup Label="QtSettings">
+    <QtInstall>$(QtRoot)</QtInstall>
+    <QtModules>core;gui;widgets;testlib</QtModules>
+  </PropertyGroup>
+  <Import Project="$(QtMsBuild)\qt.props" Condition="Exists('$(QtMsBuild)\qt.props')"/>
+  <ItemDefinitionGroup>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp"/>
+    <ClCompile Include="MainWindow.cpp"/>
+    <QtMoc Include="MainWindow.h"/>
+    <QtUic Include="ManagerShell.ui"/>
+    <QtRcc Include="Theme.qrc"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\PKNPacker.Core\PKNPacker.Core.vcxproj">
+      <Project>{1F3A495C-6962-5E11-84AD-7B34228C966F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')"/>
+  <Target Name="RequireQt" BeforeTargets="PrepareForBuild">
+    <Error Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtRoot)\bin\qmake.exe')" Text="Qt dependencies missing. Run Tools/SetupDependencies.py or configure Build/Local.props."/>
+  </Target>
+</Project>

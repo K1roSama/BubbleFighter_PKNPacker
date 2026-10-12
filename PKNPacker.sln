@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36216.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "PKNPacker.Core", "Source\PKNPacker.Core\PKNPacker.Core.vcxproj", "{1F3A495C-6962-5E11-84AD-7B34228C966F}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "PKNPacker", "Source\PKNPacker\PKNPacker.vcxproj", "{31714546-1D49-541A-89FD-926402AB1C30}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "PKNPacker.Cli", "Source\PKNPacker.Cli\PKNPacker.Cli.vcxproj", "{955195BF-E9AC-511B-A645-43683C221C8C}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "PKNPacker.Tests", "Tests\PKNPacker.Tests\PKNPacker.Tests.vcxproj", "{F9A2AFBF-6A61-52F4-B7BF-AA04A546265B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F3A495C-6962-5E11-84AD-7B34228C966F}.Debug|x64.ActiveCfg = Debug|x64
+		{1F3A495C-6962-5E11-84AD-7B34228C966F}.Debug|x64.Build.0 = Debug|x64
+		{1F3A495C-6962-5E11-84AD-7B34228C966F}.Release|x64.ActiveCfg = Release|x64
+		{1F3A495C-6962-5E11-84AD-7B34228C966F}.Release|x64.Build.0 = Release|x64
+		{31714546-1D49-541A-89FD-926402AB1C30}.Debug|x64.ActiveCfg = Debug|x64
+		{31714546-1D49-541A-89FD-926402AB1C30}.Debug|x64.Build.0 = Debug|x64
+		{31714546-1D49-541A-89FD-926402AB1C30}.Release|x64.ActiveCfg = Release|x64
+		{31714546-1D49-541A-89FD-926402AB1C30}.Release|x64.Build.0 = Release|x64
+		{955195BF-E9AC-511B-A645-43683C221C8C}.Debug|x64.ActiveCfg = Debug|x64
+		{955195BF-E9AC-511B-A645-43683C221C8C}.Debug|x64.Build.0 = Debug|x64
+		{955195BF-E9AC-511B-A645-43683C221C8C}.Release|x64.ActiveCfg = Release|x64
+		{955195BF-E9AC-511B-A645-43683C221C8C}.Release|x64.Build.0 = Release|x64
+		{F9A2AFBF-6A61-52F4-B7BF-AA04A546265B}.Debug|x64.ActiveCfg = Debug|x64
+		{F9A2AFBF-6A61-52F4-B7BF-AA04A546265B}.Debug|x64.Build.0 = Debug|x64
+		{F9A2AFBF-6A61-52F4-B7BF-AA04A546265B}.Release|x64.ActiveCfg = Release|x64
+		{F9A2AFBF-6A61-52F4-B7BF-AA04A546265B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+EndGlobal

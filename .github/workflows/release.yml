@@ -1,0 +1,148 @@
+name: Build and Release
+
+run-name: Release ${{ inputs.tag }} (Windows x64)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release 标签，例如 v1.0.0'
+        required: true
+        type: string
+      release_name:
+        description: 'Release 标题（留空使用 PKNPacker + 标签）'
+        required: false
+        type: string
+      prerelease:
+        description: '标记为预发布版本'
+        type: boolean
+        default: false
+      draft:
+        description: '创建草稿 Release'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build, test and publish Windows x64
+    runs-on: windows-2022
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
+
+    steps:
+      - name: Checkout selected revision
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate release tag
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^[0-9A-Za-z][0-9A-Za-z._+-]*$') {
+            throw '标签只能包含英文字母、数字、点、下划线、加号和连字符，并以字母或数字开头。'
+          }
+          $tagRef = "refs/tags/$env:RELEASE_TAG"
+          git check-ref-format $tagRef
+          if ($LASTEXITCODE -ne 0) { throw 'Release 标签不是有效的 Git 标签。' }
+          git show-ref --verify --quiet $tagRef
+          $tagStatus = $LASTEXITCODE
+          if ($tagStatus -eq 0) {
+            $tagCommit = git rev-parse "$tagRef^{commit}"
+            if ($LASTEXITCODE -ne 0) { throw '无法读取已有标签对应的提交。' }
+            if ($tagCommit -ne $env:GITHUB_SHA) {
+              throw '已有标签指向其它提交，请选择该标签运行，或填写新的标签。'
+            }
+          } elseif ($tagStatus -ne 1) {
+            throw '检查已有标签失败。'
+          }
+          # A missing tag is expected; do not leave Git's exit code as the step result.
+          $global:LASTEXITCODE = 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Cache Qt and Qt/MSBuild
+        id: qt-cache
+        uses: actions/cache@v5
+        with:
+          path: Artifacts/Dependencies
+          key: ${{ runner.os }}-${{ runner.arch }}-qt-${{ hashFiles('Tools/SetupDependencies.py') }}
+
+      - name: Download project dependencies
+        if: steps.qt-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install requests py7zr
+          if ($LASTEXITCODE -ne 0) { throw '安装 Python 依赖失败。' }
+          python .\Tools\SetupDependencies.py
+          if ($LASTEXITCODE -ne 0) { throw '下载 Qt 依赖失败。' }
+
+      - name: Build Release
+        run: .\Tools\Build.ps1 -Configuration Release
+
+      - name: Run core tests
+        run: |
+          & .\Artifacts\Bin\x64\Release\PKNPacker.Tests.exe
+          if ($LASTEXITCODE -ne 0) { throw '核心测试失败，停止发布。' }
+
+      - name: Package portable distribution
+        id: package
+        run: |
+          .\Tools\Deploy.ps1 -SkipBuild -Version $env:RELEASE_TAG
+          $archive = "Artifacts/Distribution/PKNPacker-$env:RELEASE_TAG-Windows-x64.zip"
+          $checksum = "$archive.sha256"
+          $hash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash *$(Split-Path -Leaf $archive)" | Set-Content -LiteralPath $checksum -Encoding ascii
+          "archive=$archive" >> $env:GITHUB_OUTPUT
+          "checksum=$checksum" >> $env:GITHUB_OUTPUT
+
+      - name: Upload build outputs and reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: PKNPacker-Windows-x64-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            Artifacts/Distribution/*.zip
+            Artifacts/Distribution/*.sha256
+            Artifacts/Logs/*.log
+            Artifacts/TestRuns/**/TestReport.json
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 0
+
+      - name: Create GitHub Release and upload assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NAME: ${{ inputs.release_name }}
+          RELEASE_DRAFT: ${{ inputs.draft }}
+          RELEASE_PRERELEASE: ${{ inputs.prerelease }}
+          RELEASE_ARCHIVE: ${{ steps.package.outputs.archive }}
+          RELEASE_CHECKSUM: ${{ steps.package.outputs.checksum }}
+        run: |
+          $title = if ([string]::IsNullOrWhiteSpace($env:RELEASE_NAME)) {
+            "PKNPacker $env:RELEASE_TAG"
+          } else { $env:RELEASE_NAME }
+          $releaseArguments = @(
+            'release', 'create', $env:RELEASE_TAG,
+            $env:RELEASE_ARCHIVE, $env:RELEASE_CHECKSUM,
+            '--repo', $env:GITHUB_REPOSITORY,
+            '--target', $env:GITHUB_SHA,
+            '--title', $title,
+            '--generate-notes'
+          )
+          if ($env:RELEASE_DRAFT -eq 'true') { $releaseArguments += '--draft' }
+          if ($env:RELEASE_PRERELEASE -eq 'true') { $releaseArguments += '--prerelease' }
+          gh @releaseArguments
+          if ($LASTEXITCODE -ne 0) { throw '创建 GitHub Release 或上传附件失败。' }

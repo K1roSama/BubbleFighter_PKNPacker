@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include=".">
+      <UniqueIdentifier>{8BFDF0E9-F442-5194-8376-5A3F1D4598BD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

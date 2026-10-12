@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PknRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</PknRoot>
+  </PropertyGroup>
+  <Import Project="$(PknRoot)Build\Local.props" Condition="Exists('$(PknRoot)Build\Local.props')" />
+  <PropertyGroup>
+    <QtRoot Condition="'$(QtRoot)'==''">$(PknRoot)Artifacts\Dependencies\Qt</QtRoot>
+    <QtMsBuild Condition="'$(QtMsBuild)'==''">$(PknRoot)Artifacts\Dependencies\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+</Project>

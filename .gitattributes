@@ -1,0 +1,18 @@
+* text=auto
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.props text eol=crlf
+*.ps1 text eol=crlf
+*.cpp text
+*.h text
+*.c text
+*.ui text
+*.qrc text
+*.md text
+*.json text
+*.py text eol=lf
+
+# Keep vendored upstream bytes and license text intact.
+/ThirdParty/** -text
+/Licenses/** -text

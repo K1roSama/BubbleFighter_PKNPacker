@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include=".">
+      <UniqueIdentifier>{539D7EEA-B00D-5DF5-8D7A-306579C1F03C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <QtMoc Include="MainWindow.h">
+      <Filter>.</Filter>
+    </QtMoc>
+    <QtUic Include="ManagerShell.ui">
+      <Filter>.</Filter>
+    </QtUic>
+    <QtRcc Include="Theme.qrc">
+      <Filter>.</Filter>
+    </QtRcc>
+  </ItemGroup>
+</Project>

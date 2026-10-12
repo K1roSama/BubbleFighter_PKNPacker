@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include=".">
+      <UniqueIdentifier>{CDC1E0D6-32A7-5513-80E6-4D8657617AFB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\Zlib">
+      <UniqueIdentifier>{AF07C9D5-0EED-5A68-8330-C223EF378B41}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArchiveBuilder.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveCatalog.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="ArchiveCatalog.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="ArchiveCodec.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="ArchiveCodec.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="ArchiveJob.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="ArchiveJob.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="ArchiveWorkspace.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="ArchiveWorkspace.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="ContentHash.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="ContentHash.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="FileIo.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="FileIo.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClInclude Include="Json.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="SnowCipher.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="SnowCipher.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowTables.h">
+      <Filter>.</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\ThirdParty\Zlib\adler32.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\crc32.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\deflate.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inffast.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inflate.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inftrees.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\trees.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\zutil.c">
+      <Filter>ThirdParty\Zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="Current">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1F3A495C-6962-5E11-84AD-7B34228C966F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>PKNPacker.Core</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="..\..\Build\Dependencies.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="..\..\Build\Common.props"/>
+  <ItemGroup>
+    <ClCompile Include="ArchiveBuilder.cpp"/>
+    <ClCompile Include="ArchiveCatalog.cpp"/>
+    <ClInclude Include="ArchiveCatalog.h"/>
+    <ClCompile Include="ArchiveCodec.cpp"/>
+    <ClInclude Include="ArchiveCodec.h"/>
+    <ClCompile Include="ArchiveJob.cpp"/>
+    <ClInclude Include="ArchiveJob.h"/>
+    <ClCompile Include="ArchiveWorkspace.cpp"/>
+    <ClInclude Include="ArchiveWorkspace.h"/>
+    <ClCompile Include="ContentHash.cpp"/>
+    <ClInclude Include="ContentHash.h"/>
+    <ClCompile Include="FileIo.cpp"/>
+    <ClInclude Include="FileIo.h"/>
+    <ClInclude Include="Json.h"/>
+    <ClCompile Include="SnowCipher.cpp"/>
+    <ClInclude Include="SnowCipher.h"/>
+    <ClInclude Include="SnowTables.h"/>
+    <ClCompile Include="..\..\ThirdParty\Zlib\adler32.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\crc32.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\deflate.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inffast.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inflate.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\inftrees.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\trees.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\ThirdParty\Zlib\zutil.c">
+      <WarningLevel>Level1</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+</Project>

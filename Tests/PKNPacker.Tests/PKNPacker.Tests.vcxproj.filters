@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include=".">
+      <UniqueIdentifier>{3B23179B-1C5D-5D56-A8C0-27444AA4DF17}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArchiveTests.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>.</Filter>
+    </ClCompile>
+    <ClInclude Include="TestSuite.h">
+      <Filter>.</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

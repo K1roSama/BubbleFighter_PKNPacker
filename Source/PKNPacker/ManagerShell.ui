@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ManagerShell</class>
+ <widget class="QWidget" name="ManagerShell">
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="spacing"><number>10</number></property>
+   <property name="leftMargin"><number>14</number></property>
+   <property name="topMargin"><number>12</number></property>
+   <property name="rightMargin"><number>14</number></property>
+   <property name="bottomMargin"><number>12</number></property>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

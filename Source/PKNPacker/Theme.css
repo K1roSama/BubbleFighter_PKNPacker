@@ -1,0 +1,17 @@
+QMainWindow, QWidget { background-color: #f5f7fa; color: #263447; }
+QToolBar { background: #ffffff; spacing: 5px; border: 0; border-bottom: 1px solid #dce3eb; padding: 7px; }
+QToolButton { padding: 7px 10px; border-radius: 5px; }
+QToolButton:hover, QPushButton:hover { background: #e5f2f3; }
+QPushButton { background: #ffffff; border: 1px solid #cdd7e2; border-radius: 5px; padding: 6px 12px; }
+QPushButton:disabled { color: #9ba5b3; background: #edf0f4; }
+QLineEdit, QComboBox { background: #ffffff; padding: 7px; border: 1px solid #cdd7e2; border-radius: 5px; }
+QTreeView, QTableView, QPlainTextEdit { background: #ffffff; alternate-background-color: #f7f9fc; border: 1px solid #dce3eb; selection-background-color: #d8eff0; selection-color: #16595f; }
+QHeaderView::section { background: #edf2f7; color: #506174; border: 0; border-bottom: 1px solid #dce3eb; padding: 7px; }
+QTabWidget::pane { border: 1px solid #dce3eb; }
+QTabBar::tab { background: #e9eef4; padding: 7px 15px; }
+QTabBar::tab:selected { background: #ffffff; color: #0d757b; }
+QProgressBar { border: 1px solid #dce3eb; border-radius: 4px; background: #ffffff; text-align: center; min-height: 16px; }
+QProgressBar::chunk { background: #168b90; border-radius: 3px; }
+QLabel#Title { font-size: 22px; font-weight: 600; }
+QLabel#Subtitle { color: #65768a; }
+QStatusBar { background: #edf2f7; color: #506174; }
